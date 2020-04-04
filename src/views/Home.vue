@@ -1,18 +1,46 @@
 <template>
   <swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide class="wall1 ">
+    <!-- <div class="btn .swiper-button-next" @click="nextPage"> -->
+
+    <!-- </div> -->
+    <swiper-slide class="wall1">
+      <div class="swiper-button-next"></div>
+
+      <section></section>
+      <section></section>
+      <section></section>
       <div class="wall1_content animated swing">
-        <p>你好<br>
-        欢迎来</p>
+        <p>
+          你好~
+          <br />欢迎来到我的个人小站
+        </p>
       </div>
     </swiper-slide>
-    <swiper-slide class="wall2"><div class="wall1_content animated swing">
-        <p>你好<br>
-        欢迎来</p>
-      </div></swiper-slide>
-    <swiper-slide class="wall3">3</swiper-slide>
-    <swiper-slide class="wall4">4</swiper-slide>
-    <swiper-slide class="wall5">5</swiper-slide>
+    <swiper-slide class="wall2">
+      <div class="swiper-button-next"></div>
+
+      <section></section>
+      <section></section>
+      <section></section>
+      <div class="wall1_content">
+        <p>
+          我叫高奇
+          <br />一个前端码农
+        </p>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="wall3">
+
+      <section></section>
+      <section></section>
+      <section></section>
+      <div class="wall1_content">
+        <p>
+          喜欢运动
+          <br />热爱生活
+        </p>
+      </div>
+    </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
@@ -36,12 +64,15 @@ export default {
         slidesPerView: 1,
         // spaceBetween: 30,
         mousewheel: {
-          sensitivity : 3,
+          sensitivity: 3
+        },
+        navigation: {
+          nextEl: ".swiper-button-next"
         },
         pagination: {
           el: ".swiper-pagination",
           clickable: true
-        },
+        }
       }
     };
   },
@@ -51,45 +82,63 @@ export default {
     }
   },
   created() {},
+  mounted(){
+    
+  },
   methods: {}
 };
 </script>
 <style scoped>
-@media  screen and (min-width:1025px){
-    .wall1_content{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
-  background-color: rgba(255, 255, 255, 0.5);
- border-radius: 300px;
-  box-shadow:5px 5px 20px #333333;
+.swiper-button-next {
+  top: 96% !important;
+  left: 50%;
+  transform: translate(-50%, 0) rotate(90deg);
+  animation: btn 1s linear infinite;
 }
-.wall1_content p{
-  width: 300px;
+@keyframes btn {
+  0% {
+  }
+  50% {
+    top: 94%;
+    opacity: 0.1;
+  }
+  100% {
+    top: 96%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .wall1_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 300px;
+    box-shadow: 5px 5px 20px #333333;
+  }
+  .wall1_content p {
+    width: 300px;
     font-size: 50px;
   }
-
 }
-@media  screen and (max-width:1024px) {
-  .wall1_content{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-  width: 300px;
-  height: 300px;
-  background-color: rgba(255, 255, 255, 0.5);
- border-radius: 150px;
-  box-shadow:5px 5px 20px #333333;
-}
-.wall1_content p{
-  width: 150px;
+@media screen and (max-width: 1024px) {
+  .wall1_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 150px;
+    box-shadow: 5px 5px 20px #333333;
+  }
+  .wall1_content p {
+    width: 150px;
     font-size: 25px;
   }
-
 }
 html,
 body {
@@ -129,44 +178,53 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
-.wall1{
+.wall1,
+.wall2,
+.wall3 {
   width: 100%;
-  top: 0;
-  left: 0;
+  height: 100%;
+  background: skyblue;
+  position: relative;
   overflow: hidden;
-  z-index: 2;
-  background: url("http://attach.bbs.miui.com/forum/201304/25/195151szk8umd8or8fmfa5.jpg") no-repeat fixed center
 }
-.wall2{
-  background: url("http://attach.bbs.miui.com/forum/201404/01/141958ecd21euizj4iiiez.jpg") center;
+.wall2 {
+  background: rgb(85, 195, 238);
 }
-.wall3{
-  background: url("http://attach.bbs.miui.com/forum/201204/17/1539083wxpexg5b0fbvzpv.jpg") center;
+.wall3 {
+  background: rgb(37, 186, 245);
 }
-.wall4{
-  background: url("http://attach.bbs.miui.com/forum/201306/23/110328s72xxse7lfis9fnd.jpg") center;
-}
-.wall5{
-  background: url("http://attach.bbs.miui.com/forum/201311/17/174124tp3sa6vvckc25oc8.jpg") center;
-}
-/* .wall1,.wall2 {
-  width: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: 2;
-} */
-/* .wall1::before ,.wall2::before{
-  content: "";
+section {
+  height: 100%;
+  width: 300%;
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
-  filter: blur(1px);
-  margin: -20px;
-  z-index: -1;
-} */
-
- 
+}
+section:nth-of-type(1) {
+  background: url("../assets/cloud_one.png");
+  animation: cloud 50s linear infinite;
+}
+section:nth-of-type(2) {
+  background: url("../assets/cloud_two.png");
+  animation: cloud 75s linear infinite;
+}
+section:nth-of-type(3) {
+  background: url("../assets/cloud_three.png");
+  animation: cloud 100s linear infinite;
+}
+@keyframes cloud {
+  0% {
+  }
+  100% {
+    left: -200%;
+  }
+}
+.wall1,
+.wall2 {
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 2;
+}
 </style>
